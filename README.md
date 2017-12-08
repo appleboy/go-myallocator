@@ -12,5 +12,5 @@ See [documentation](http://myallocator.github.io/apidocs/index.html) for myalloc
 
 Support the following API.
 
-* [ ] ARIUpdate
-* [ ] AssociateUserToPMS
+* [x] ARIUpdate
+* [x] AssociateUserToPMS
