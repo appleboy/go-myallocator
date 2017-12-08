@@ -89,7 +89,7 @@ type AssociateUserToPMSResponse struct {
 // New MyAllocator object
 func New(vendorID, vendorPassword string) (*MyAllocator, error) {
 	if vendorID == "" || vendorPassword == "" {
-		return nil, errors.New("Missing vendor id or password")
+		return nil, errors.New("missing myallocator vendor id or password")
 	}
 
 	return &MyAllocator{
