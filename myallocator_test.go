@@ -46,3 +46,49 @@ func TestNew(t *testing.T) {
 		})
 	}
 }
+
+func TestMyAllocator_UpdateVendor(t *testing.T) {
+	type fields struct {
+		AuthVendorID       string
+		AuthVendorPassword string
+		Debug              bool
+	}
+	type args struct {
+		id       string
+		password string
+	}
+	tests := []struct {
+		name   string
+		fields fields
+		args   args
+		want   *MyAllocator
+	}{
+		{
+			name: "update id and password",
+			fields: fields{
+				AuthVendorID:       "test",
+				AuthVendorPassword: "1234",
+			},
+			args: args{
+				id:       "appleboy",
+				password: "5678",
+			},
+			want: &MyAllocator{
+				AuthVendorID:       "appleboy",
+				AuthVendorPassword: "5678",
+			},
+		},
+	}
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			m := &MyAllocator{
+				AuthVendorID:       tt.fields.AuthVendorID,
+				AuthVendorPassword: tt.fields.AuthVendorPassword,
+				Debug:              tt.fields.Debug,
+			}
+			if got := m.UpdateVendor(tt.args.id, tt.args.password); !reflect.DeepEqual(got, tt.want) {
+				t.Errorf("MyAllocator.UpdateVendor() = %v, want %v", got, tt.want)
+			}
+		})
+	}
+}

@@ -98,6 +98,14 @@ func New(vendorID, vendorPassword string) (*MyAllocator, error) {
 	}, nil
 }
 
+// UpdateVendor for update vendor user id and password
+func (m *MyAllocator) UpdateVendor(id, password string) *MyAllocator {
+	m.AuthVendorID = id
+	m.AuthVendorPassword = password
+
+	return m
+}
+
 // UpdateUserToken get user token from UpdateUserToken API
 func (m *MyAllocator) UpdateUserToken(req *AssociateUserToPMSRequest) (*AssociateUserToPMSResponse, error) {
 	req.AuthVendorID = m.AuthVendorID
