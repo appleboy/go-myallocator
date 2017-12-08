@@ -1,0 +1,13 @@
+{
+	"comment": "",
+	"ignore": "test",
+	"package": [
+		{
+			"checksumSHA1": "QwvGCt0X6Z8EvhUTygvCS80wswg=",
+			"path": "github.com/astaxie/beego/httplib",
+			"revision": "bf5c5626ab429e66d88602e1ab1ab5fbf4629a01",
+			"revisionTime": "2017-12-06T15:37:36Z"
+		}
+	],
+	"rootPath": "github.com/appleboy/go-myallocator"
+}
