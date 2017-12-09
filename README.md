@@ -16,3 +16,4 @@ Support the following API.
 * [x] AssociateUserToPMS
 * [x] VendorSet
 * [x] RoomAvailabilityList
+* [x] ChannelList
