@@ -86,6 +86,24 @@ type AssociateUserToPMSResponse struct {
 	AuthUserToken string `json:"Auth/UserToken"`
 }
 
+// VendorSetRequest Use this call if you're using booking callbacks to set the callback URL and password.
+// See https://myallocator.github.io/apidocs/#api-3_API_Methods-VendorSet
+type VendorSetRequest struct {
+	AuthVendorID          string `json:"Auth/VendorId"`
+	AuthVendorPassword    string `json:"Auth/VendorPassword"`
+	CallbackURL           string `json:"Callback/URL"`
+	CallbackPassword      string `json:"Callback/Password"`
+	CallbackNotifyBooking bool   `json:"Callback/NotifyBooking"`
+}
+
+// VendorSetResponse for vendor set response
+type VendorSetResponse struct {
+	Success               bool   `json:"Success"`
+	CallbackPassword      string `json:"Callback/Password"`
+	CallbackNotifyBooking bool   `json:"Callback/NotifyBooking"`
+	CallbackURL           string `json:"Callback/URL"`
+}
+
 // New MyAllocator object
 func New(vendorID, vendorPassword string) (*MyAllocator, error) {
 	if vendorID == "" || vendorPassword == "" {
@@ -112,6 +130,20 @@ func (m *MyAllocator) UpdateUserToken(req *AssociateUserToPMSRequest) (*Associat
 	req.AuthVendorPassword = m.AuthVendorPassword
 
 	res := new(AssociateUserToPMSResponse)
+
+	if err := SendRequest(AssociateUserToPMSURL, req, res, m.Debug); err != nil {
+		return nil, err
+	}
+
+	return res, nil
+}
+
+// VendorSet Use this call if you're using booking callbacks to set the callback URL and password.
+func (m *MyAllocator) VendorSet(req *VendorSetRequest) (*VendorSetResponse, error) {
+	req.AuthVendorID = m.AuthVendorID
+	req.AuthVendorPassword = m.AuthVendorPassword
+
+	res := new(VendorSetResponse)
 
 	if err := SendRequest(AssociateUserToPMSURL, req, res, m.Debug); err != nil {
 		return nil, err
