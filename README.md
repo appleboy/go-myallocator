@@ -15,3 +15,4 @@ Support the following API.
 * [x] ARIUpdate
 * [x] AssociateUserToPMS
 * [x] VendorSet
+* [x] RoomAvailabilityList

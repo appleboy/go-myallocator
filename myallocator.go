@@ -104,6 +104,40 @@ type VendorSetResponse struct {
 	CallbackURL           string `json:"Callback/URL"`
 }
 
+// RoomAvailabilityListReq can be used to query for all data that we hold
+// for a specific property and date range.
+// https://myallocator.github.io/apidocs/#api-3_API_Methods-RoomAvailabilityList
+type RoomAvailabilityListReq struct {
+	AuthVendorID       string `json:"Auth/VendorId"`
+	AuthVendorPassword string `json:"Auth/VendorPassword"`
+	AuthUserToken      string `json:"Auth/UserToken"`
+	AuthPropertyID     string `json:"Auth/PropertyId"`
+	StartDate          string `json:"StartDate"`
+	EndDate            string `json:"EndDate"`
+}
+
+// RoomAvailabilityListRes for RoomAvailabilityList response
+type RoomAvailabilityListRes struct {
+	Success bool `json:"Success"`
+	Rooms   []struct {
+		RatePlanID int  `json:"RatePlanId"`
+		PropertyID int  `json:"PropertyId"`
+		IsPrivate  bool `json:"isPrivate"`
+		RoomID     int  `json:"RoomId"`
+		Dates      []struct {
+			Units              int    `json:"Units"`
+			Date               string `json:"Date"`
+			ClosedForDeparture int    `json:"ClosedForDeparture"`
+			ClosedForArrival   int    `json:"ClosedForArrival"`
+			Price              string `json:"Price"`
+			MinStay            int    `json:"MinStay"`
+			MaxStay            int    `json:"MaxStay"`
+			Closed             int    `json:"Closed"`
+		} `json:"Dates"`
+		RoomName string `json:"RoomName"`
+	} `json:"Rooms"`
+}
+
 // New MyAllocator object
 func New(vendorID, vendorPassword string) (*MyAllocator, error) {
 	if vendorID == "" || vendorPassword == "" {
@@ -144,6 +178,22 @@ func (m *MyAllocator) VendorSet(req *VendorSetRequest) (*VendorSetResponse, erro
 	req.AuthVendorPassword = m.AuthVendorPassword
 
 	res := new(VendorSetResponse)
+
+	if err := SendRequest(AssociateUserToPMSURL, req, res, m.Debug); err != nil {
+		return nil, err
+	}
+
+	return res, nil
+}
+
+// RoomAvailabilityList can be used to query for all data that we hold for a specific property
+// and date range. The date range can only be 31 days as the maximum. You can query multiple times
+// if you need a longer date range.
+func (m *MyAllocator) RoomAvailabilityList(req *RoomAvailabilityListReq) (*RoomAvailabilityListRes, error) {
+	req.AuthVendorID = m.AuthVendorID
+	req.AuthVendorPassword = m.AuthVendorPassword
+
+	res := new(RoomAvailabilityListRes)
 
 	if err := SendRequest(AssociateUserToPMSURL, req, res, m.Debug); err != nil {
 		return nil, err

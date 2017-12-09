@@ -7,4 +7,6 @@ const (
 	AssociateUserToPMSURL = "https://api.myallocator.com/pms/v201408/json/AssociateUserToPMS"
 	// VendorSetURL for if you're using booking callbacks to set the callback URL and password.
 	VendorSetURL = "https://api.myallocator.com/pms/v201408/json/VendorSet"
+	// RoomAvailabilityListURL is RoomAvailabilityList API URL
+	RoomAvailabilityListURL = "https://api.myallocator.com/pms/v201408/json/RoomAvailabilityList"
 )
