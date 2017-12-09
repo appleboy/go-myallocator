@@ -4794,9 +4794,11 @@ func (m *MyAllocator) ARIUpdate(req *ARIRequest) (*ARIUpdateResponse, error) {
 
 // ChannelList dumps information about all known channels, their status, and supported fields.
 // https://myallocator.github.io/apidocs/#api-3_API_Methods-ChannelList
-func (m *MyAllocator) ChannelList(req *VendorReq) (*ChannelListRes, error) {
-	req.AuthVendorID = m.AuthVendorID
-	req.AuthVendorPassword = m.AuthVendorPassword
+func (m *MyAllocator) ChannelList() (*ChannelListRes, error) {
+	req := &VendorReq{
+		AuthVendorID:       m.AuthVendorID,
+		AuthVendorPassword: m.AuthVendorPassword,
+	}
 
 	res := new(ChannelListRes)
 
