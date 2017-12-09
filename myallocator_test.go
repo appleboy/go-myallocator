@@ -92,3 +92,57 @@ func TestMyAllocator_UpdateVendor(t *testing.T) {
 		})
 	}
 }
+
+func TestMyAllocator_SetDebug(t *testing.T) {
+	type fields struct {
+		AuthVendorID       string
+		AuthVendorPassword string
+		Debug              bool
+	}
+	type args struct {
+		enable bool
+	}
+	tests := []struct {
+		name   string
+		fields fields
+		args   args
+		want   *MyAllocator
+	}{
+		{
+			name: "enable debug",
+			fields: fields{
+				Debug: false,
+			},
+			args: args{
+				enable: true,
+			},
+			want: &MyAllocator{
+				Debug: true,
+			},
+		},
+		{
+			name: "disable debug",
+			fields: fields{
+				Debug: true,
+			},
+			args: args{
+				enable: false,
+			},
+			want: &MyAllocator{
+				Debug: false,
+			},
+		},
+	}
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			m := &MyAllocator{
+				AuthVendorID:       tt.fields.AuthVendorID,
+				AuthVendorPassword: tt.fields.AuthVendorPassword,
+				Debug:              tt.fields.Debug,
+			}
+			if got := m.SetDebug(tt.args.enable); !reflect.DeepEqual(got, tt.want) {
+				t.Errorf("MyAllocator.SetDebug() = %v, want %v", got, tt.want)
+			}
+		})
+	}
+}

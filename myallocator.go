@@ -425,6 +425,13 @@ func (m *MyAllocator) BookingList(req *BookingListReq) (*BookingListRes, error) 
 	return res, nil
 }
 
+// SetDebug to set debug mode
+func (m *MyAllocator) SetDebug(enable bool) *MyAllocator {
+	m.Debug = enable
+
+	return m
+}
+
 // SendRequest for myallocator api
 func SendRequest(url string, body interface{}, res interface{}, debug bool) error {
 	req := httplib.Post(url).Debug(debug)
