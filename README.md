@@ -17,3 +17,4 @@ Support the following API.
 * [x] VendorSet
 * [x] RoomAvailabilityList
 * [x] ChannelList
+* [x] PropertyChannelList
