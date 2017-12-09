@@ -15,4 +15,6 @@ const (
 	PropertyChannelListURL = "https://api.myallocator.com/pms/v201609/json/PropertyChannelList"
 	// AssociatePropertyToPMSURL is AssociatePropertyToPMS API URL
 	AssociatePropertyToPMSURL = "https://api.myallocator.com/pms/v201408/json/AssociatePropertyToPMS"
+	// BookingListURL is BookingList API URL
+	BookingListURL = "https://api.myallocator.com/pms/v201408/json/BookingList"
 )

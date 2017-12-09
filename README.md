@@ -19,3 +19,4 @@ Support the following API.
 * [x] ChannelList
 * [x] PropertyChannelList
 * [x] AssociatePropertyToPMS
+* [x] BookingList

@@ -214,6 +214,79 @@ type AssociatePropertyToPMSRes struct {
 	Warning           string `json:"warning"`
 }
 
+// BookingListReq allows you to query for bookings made to a specific property by booking date,
+// modification date or arrival date.
+// https://myallocator.github.io/apidocs/#api-3_API_Methods-BookingList
+type BookingListReq struct {
+	AuthUserToken         string `json:"Auth/UserToken"`
+	AuthVendorID          string `json:"Auth/VendorId"`
+	AuthVendorPassword    string `json:"Auth/VendorPassword"`
+	AuthPropertyID        string `json:"Auth/PropertyId"`
+	ModificationStartDate string `json:"ModificationStartDate"`
+	ModificationEndDate   string `json:"ModificationEndDate"`
+}
+
+// BookingListRes for BookingList response
+type BookingListRes struct {
+	QueryType string `json:"query_type"`
+	EndDate   string `json:"end_date"`
+	Success   bool   `json:"Success"`
+	Bookings  []struct {
+		TotalCurrency string `json:"TotalCurrency"`
+		OrderID       string `json:"OrderId"`
+		Rooms         []struct {
+			RoomTypeIds []int `json:"RoomTypeIds"`
+			Adults      int   `json:"Adults"`
+			DayRates    []struct {
+				RateID      string `json:"RateId"`
+				Description string `json:"Description"`
+				Date        string `json:"Date"`
+				Rate        string `json:"Rate"`
+			} `json:"DayRates"`
+			RateID                 string        `json:"RateId"`
+			Policy                 string        `json:"Policy"`
+			RoomDesc               string        `json:"RoomDesc"`
+			ChannelRoomType        string        `json:"ChannelRoomType"`
+			RateDesc               string        `json:"RateDesc"`
+			MyallocatorRateplanIds []interface{} `json:"MyallocatorRateplanIds"`
+			StartDate              string        `json:"StartDate"`
+			Occupancy              int           `json:"Occupancy"`
+			EndDate                string        `json:"EndDate"`
+			Children               int           `json:"Children"`
+			Units                  string        `json:"Units"`
+			Breakfast              bool          `json:"Breakfast"`
+		} `json:"Rooms"`
+		PropertyID                  int    `json:"PropertyId"`
+		StartDate                   string `json:"StartDate"`
+		EndDate                     string `json:"EndDate"`
+		MyallocatorCreationDate     string `json:"MyallocatorCreationDate"`
+		PaymentCollect              string `json:"PaymentCollect,omitempty"`
+		IsModification              bool   `json:"IsModification"`
+		MarkedAsRead                bool   `json:"MarkedAsRead"`
+		MyallocatorModificationTime string `json:"MyallocatorModificationTime"`
+		OrderDate                   string `json:"OrderDate"`
+		OrderTime                   string `json:"OrderTime"`
+		IsCancellation              bool   `json:"IsCancellation"`
+		Acknowledged                bool   `json:"Acknowledged"`
+		Version                     int    `json:"Version"`
+		Channel                     string `json:"Channel"`
+		MyallocatorCreationTime     string `json:"MyallocatorCreationTime"`
+		MyallocatorID               string `json:"MyallocatorId"`
+		MyallocatorModificationDate string `json:"MyallocatorModificationDate"`
+		TotalPrice                  string `json:"TotalPrice"`
+		Customers                   []struct {
+			CustomerLName       string `json:"CustomerLName"`
+			CustomerPhoneMobile string `json:"CustomerPhoneMobile"`
+			CustomerNote        string `json:"CustomerNote"`
+			CustomerArrivalTime string `json:"CustomerArrivalTime"`
+			CustomerEmail       string `json:"CustomerEmail"`
+			CustomerFName       string `json:"CustomerFName"`
+		} `json:"Customers"`
+		OrderSource string `json:"OrderSource,omitempty"`
+	} `json:"Bookings"`
+	StartDate string `json:"start_date"`
+}
+
 // New MyAllocator object
 func New(vendorID, vendorPassword string) (*MyAllocator, error) {
 	if vendorID == "" || vendorPassword == "" {
@@ -331,6 +404,21 @@ func (m *MyAllocator) AssociatePropertyToPMS(req *AssociatePropertyToPMSReq) (*A
 	res := new(AssociatePropertyToPMSRes)
 
 	if err := SendRequest(AssociatePropertyToPMSURL, req, res, m.Debug); err != nil {
+		return nil, err
+	}
+
+	return res, nil
+}
+
+// BookingList  query for bookings made to a specific property
+// by booking date, modification date or arrival date.
+func (m *MyAllocator) BookingList(req *BookingListReq) (*BookingListRes, error) {
+	req.AuthVendorID = m.AuthVendorID
+	req.AuthVendorPassword = m.AuthVendorPassword
+
+	res := new(BookingListRes)
+
+	if err := SendRequest(BookingListURL, req, res, m.Debug); err != nil {
 		return nil, err
 	}
 
