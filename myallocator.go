@@ -181,21 +181,6 @@ type PropertyChannelListReq struct {
 	AuthVendorPassword string `json:"Auth/VendorPassword"`
 }
 
-// PropertyChannelListRes for PropertyChannelList response
-// missing some field
-type PropertyChannelListRes struct {
-	Properties []struct {
-		Channels struct {
-			Ote struct {
-				Status   string `json:"status"`
-				Currency string `json:"currency"`
-			} `json:"ote"`
-		} `json:"Channels"`
-		PropertyID int `json:"PropertyId"`
-	} `json:"Properties"`
-	Success bool `json:"Success"`
-}
-
 // AssociatePropertyToPMSReq Creates a permanent link between an existing myallocator property and a PMS Vendor.
 // https://myallocator.github.io/apidocs/#api-3_API_Methods-AssociatePropertyToPMS
 type AssociatePropertyToPMSReq struct {
