@@ -1,735 +1,198 @@
 package ma
 
+// Channel struct
+type Channel struct {
+	Status   string `json:"status"`
+	Currency string `json:"currency"`
+}
+
 // PropertyChannelListRes for PropertyChannelList response
 // missing some field
 type PropertyChannelListRes struct {
 	Properties []struct {
 		PropertyID int `json:"PropertyId"`
 		Channels   struct {
-			Koh struct {
-				Currency string `json:"currency"`
-				Status   string `json:"status"`
-			} `json:"koh"`
-			Asyo struct {
-				Status   string `json:"status"`
-				Currency string `json:"currency"`
-			} `json:"asyo"`
-			Vjo struct {
-				Currency string `json:"currency"`
-				Status   string `json:"status"`
-			} `json:"vjo"`
-			Bb struct {
-				Currency string `json:"currency"`
-				Status   string `json:"status"`
-			} `json:"bb"`
-			Mal struct {
-				Currency string `json:"currency"`
-				Status   string `json:"status"`
-			} `json:"mal"`
-			Outp struct {
-				Status   string `json:"status"`
-				Currency string `json:"currency"`
-			} `json:"outp"`
-			Trav struct {
-				Currency string `json:"currency"`
-				Status   string `json:"status"`
-			} `json:"trav"`
-			Mcs struct {
-				Status   string `json:"status"`
-				Currency string `json:"currency"`
-			} `json:"mcs"`
-			Ago struct {
-				Currency string `json:"currency"`
-				Status   string `json:"status"`
-			} `json:"ago"`
-			Hcu2 struct {
-				Currency string `json:"currency"`
-				Status   string `json:"status"`
-			} `json:"hcu2"`
-			Buen struct {
-				Currency string `json:"currency"`
-				Status   string `json:"status"`
-			} `json:"buen"`
-			Myb struct {
-				Currency string `json:"currency"`
-				Status   string `json:"status"`
-			} `json:"myb"`
-			Bkb struct {
-				Status   string `json:"status"`
-				Currency string `json:"currency"`
-			} `json:"bkb"`
-			Ptch struct {
-				Status   string `json:"status"`
-				Currency string `json:"currency"`
-			} `json:"ptch"`
-			Bp struct {
-				Status   string `json:"status"`
-				Currency string `json:"currency"`
-			} `json:"bp"`
-			Lmin struct {
-				Status   string `json:"status"`
-				Currency string `json:"currency"`
-			} `json:"lmin"`
-			G2I struct {
-				Status   string `json:"status"`
-				Currency string `json:"currency"`
-			} `json:"g2i"`
-			Htrv struct {
-				Status   string `json:"status"`
-				Currency string `json:"currency"`
-			} `json:"htrv"`
-			Clt struct {
-				Currency string `json:"currency"`
-				Status   string `json:"status"`
-			} `json:"clt"`
-			Han struct {
-				Status   string `json:"status"`
-				Currency string `json:"currency"`
-			} `json:"han"`
-			Yoho struct {
-				Currency string `json:"currency"`
-				Status   string `json:"status"`
-			} `json:"yoho"`
-			Hde struct {
-				Currency string `json:"currency"`
-				Status   string `json:"status"`
-			} `json:"hde"`
-			Wanu struct {
-				Status   string `json:"status"`
-				Currency string `json:"currency"`
-			} `json:"wanu"`
-			Hd struct {
-				Currency string `json:"currency"`
-				Status   string `json:"status"`
-			} `json:"hd"`
-			Orb struct {
-				Currency string `json:"currency"`
-				Status   string `json:"status"`
-			} `json:"orb"`
-			Rrep struct {
-				Status   string `json:"status"`
-				Currency string `json:"currency"`
-			} `json:"rrep"`
-			Loc struct {
-				Currency string `json:"currency"`
-				Status   string `json:"status"`
-			} `json:"loc"`
-			Air struct {
-				Currency string `json:"currency"`
-				Status   string `json:"status"`
-			} `json:"air"`
-			Deco struct {
-				Status   string `json:"status"`
-				Currency string `json:"currency"`
-			} `json:"deco"`
-			Btob struct {
-				Currency string `json:"currency"`
-				Status   string `json:"status"`
-			} `json:"btob"`
-			Enz struct {
-				Currency string `json:"currency"`
-				Status   string `json:"status"`
-			} `json:"enz"`
-			Tpvl struct {
-				Status   string `json:"status"`
-				Currency string `json:"currency"`
-			} `json:"tpvl"`
-			Hbe struct {
-				Currency string `json:"currency"`
-				Status   string `json:"status"`
-			} `json:"hbe"`
-			Saas struct {
-				Currency string `json:"currency"`
-				Status   string `json:"status"`
-			} `json:"saas"`
-			Liko struct {
-				Status   string `json:"status"`
-				Currency string `json:"currency"`
-			} `json:"liko"`
-			Fk struct {
-				Currency string `json:"currency"`
-				Status   string `json:"status"`
-			} `json:"fk"`
-			Hhb struct {
-				Currency string `json:"currency"`
-				Status   string `json:"status"`
-			} `json:"hhb"`
-			Buun struct {
-				Currency string `json:"currency"`
-				Status   string `json:"status"`
-			} `json:"buun"`
-			Ost struct {
-				Currency string `json:"currency"`
-				Status   string `json:"status"`
-			} `json:"ost"`
-			Hc struct {
-				Currency string `json:"currency"`
-				Status   string `json:"status"`
-			} `json:"hc"`
-			Gom struct {
-				Status   string `json:"status"`
-				Currency string `json:"currency"`
-			} `json:"gom"`
-			Vhh struct {
-				Status   string `json:"status"`
-				Currency string `json:"currency"`
-			} `json:"vhh"`
-			Prsc struct {
-				Status   string `json:"status"`
-				Currency string `json:"currency"`
-			} `json:"prsc"`
-			Eb struct {
-				Currency string `json:"currency"`
-				Status   string `json:"status"`
-			} `json:"eb"`
-			NineFl struct {
-				Currency string `json:"currency"`
-				Status   string `json:"status"`
-			} `json:"9fl"`
-			Mrbb struct {
-				Currency string `json:"currency"`
-				Status   string `json:"status"`
-			} `json:"mrbb"`
-			Pool struct {
-				Status   string `json:"status"`
-				Currency string `json:"currency"`
-			} `json:"pool"`
-			Bole struct {
-				Status   string `json:"status"`
-				Currency string `json:"currency"`
-			} `json:"bole"`
-			Whoo struct {
-				Currency string `json:"currency"`
-				Status   string `json:"status"`
-			} `json:"whoo"`
-			Eget struct {
-				Currency string `json:"currency"`
-				Status   string `json:"status"`
-			} `json:"eget"`
-			Hotu struct {
-				Currency string `json:"currency"`
-				Status   string `json:"status"`
-			} `json:"hotu"`
-			Inst struct {
-				Currency string `json:"currency"`
-				Status   string `json:"status"`
-			} `json:"inst"`
-			Hs struct {
-				Status   string `json:"status"`
-				Currency string `json:"currency"`
-			} `json:"hs"`
-			Grup struct {
-				Currency string `json:"currency"`
-				Status   string `json:"status"`
-			} `json:"grup"`
-			Xmlt struct {
-				Status   string `json:"status"`
-				Currency string `json:"currency"`
-			} `json:"xmlt"`
-			Vaca struct {
-				Status   string `json:"status"`
-				Currency string `json:"currency"`
-			} `json:"vaca"`
-			Net struct {
-				Currency string `json:"currency"`
-				Status   string `json:"status"`
-			} `json:"net"`
-			Tmd struct {
-				Status   string `json:"status"`
-				Currency string `json:"currency"`
-			} `json:"tmd"`
-			Loop struct {
-				Currency string `json:"currency"`
-				Status   string `json:"status"`
-			} `json:"loop"`
-			Bon struct {
-				Status   string `json:"status"`
-				Currency string `json:"currency"`
-			} `json:"bon"`
-			Hoga struct {
-				Status   string `json:"status"`
-				Currency string `json:"currency"`
-			} `json:"hoga"`
-			Ct struct {
-				Currency string `json:"currency"`
-				Status   string `json:"status"`
-			} `json:"ct"`
-			Kch struct {
-				Status   string `json:"status"`
-				Currency string `json:"currency"`
-			} `json:"kch"`
-			Art struct {
-				Status   string `json:"status"`
-				Currency string `json:"currency"`
-			} `json:"art"`
-			Tlok struct {
-				Currency string `json:"currency"`
-				Status   string `json:"status"`
-			} `json:"tlok"`
-			Gr struct {
-				Status   string `json:"status"`
-				Currency string `json:"currency"`
-			} `json:"gr"`
-			Trpz struct {
-				Currency string `json:"currency"`
-				Status   string `json:"status"`
-			} `json:"trpz"`
-			Hb2 struct {
-				Status   string `json:"status"`
-				Currency string `json:"currency"`
-			} `json:"hb2"`
-			Eba struct {
-				Status   string `json:"status"`
-				Currency string `json:"currency"`
-			} `json:"eba"`
-			Hort struct {
-				Status   string `json:"status"`
-				Currency string `json:"currency"`
-			} `json:"hort"`
-			Rep struct {
-				Status   string `json:"status"`
-				Currency string `json:"currency"`
-			} `json:"rep"`
-			Bnw struct {
-				Currency string `json:"currency"`
-				Status   string `json:"status"`
-			} `json:"bnw"`
-			Vcay struct {
-				Currency string `json:"currency"`
-				Status   string `json:"status"`
-			} `json:"vcay"`
-			Cwd struct {
-				Status   string `json:"status"`
-				Currency string `json:"currency"`
-			} `json:"cwd"`
-			Hrs struct {
-				Currency string `json:"currency"`
-				Status   string `json:"status"`
-			} `json:"hrs"`
-			Tri struct {
-				Currency string `json:"currency"`
-				Status   string `json:"status"`
-			} `json:"tri"`
-			Apal struct {
-				Currency string `json:"currency"`
-				Status   string `json:"status"`
-			} `json:"apal"`
-			Boo struct {
-				Currency string `json:"currency"`
-				Status   string `json:"status"`
-			} `json:"boo"`
-			Snrg struct {
-				Status   string `json:"status"`
-				Currency string `json:"currency"`
-			} `json:"snrg"`
-			Lako struct {
-				Status   string `json:"status"`
-				Currency string `json:"currency"`
-			} `json:"lako"`
-			Toqt struct {
-				Currency string `json:"currency"`
-				Status   string `json:"status"`
-			} `json:"toqt"`
-			Chot struct {
-				Currency string `json:"currency"`
-				Status   string `json:"status"`
-			} `json:"chot"`
-			Pre struct {
-				Currency string `json:"currency"`
-				Status   string `json:"status"`
-			} `json:"pre"`
-			Cozy struct {
-				Currency string `json:"currency"`
-				Status   string `json:"status"`
-			} `json:"cozy"`
-			Advt struct {
-				Status   string `json:"status"`
-				Currency string `json:"currency"`
-			} `json:"advt"`
-			Wim struct {
-				Currency string `json:"currency"`
-				Status   string `json:"status"`
-			} `json:"wim"`
-			Adve struct {
-				Status   string `json:"status"`
-				Currency string `json:"currency"`
-			} `json:"adve"`
-			Tob struct {
-				Status   string `json:"status"`
-				Currency string `json:"currency"`
-			} `json:"tob"`
-			Ho struct {
-				Currency string `json:"currency"`
-				Status   string `json:"status"`
-			} `json:"ho"`
-			Hopa struct {
-				Currency string `json:"currency"`
-				Status   string `json:"status"`
-			} `json:"hopa"`
-			Flh struct {
-				Currency string `json:"currency"`
-				Status   string `json:"status"`
-			} `json:"flh"`
-			Hipc struct {
-				Status   string `json:"status"`
-				Currency string `json:"currency"`
-			} `json:"hipc"`
-			Hoca struct {
-				Currency string `json:"currency"`
-				Status   string `json:"status"`
-			} `json:"hoca"`
-			Rtel struct {
-				Status   string `json:"status"`
-				Currency string `json:"currency"`
-			} `json:"rtel"`
-			Mmt struct {
-				Currency string `json:"currency"`
-				Status   string `json:"status"`
-			} `json:"mmt"`
-			Enbc struct {
-				Status   string `json:"status"`
-				Currency string `json:"currency"`
-			} `json:"enbc"`
-			Lr struct {
-				Currency string `json:"currency"`
-				Status   string `json:"status"`
-			} `json:"lr"`
-			Bnb struct {
-				Currency string `json:"currency"`
-				Status   string `json:"status"`
-			} `json:"bnb"`
-			Rec struct {
-				Currency string `json:"currency"`
-				Status   string `json:"status"`
-			} `json:"rec"`
-			H2H struct {
-				Currency string `json:"currency"`
-				Status   string `json:"status"`
-			} `json:"h2h"`
-			Hand struct {
-				Currency string `json:"currency"`
-				Status   string `json:"status"`
-			} `json:"hand"`
-			Hmi struct {
-				Status   string `json:"status"`
-				Currency string `json:"currency"`
-			} `json:"hmi"`
-			Bnb2 struct {
-				Status   string `json:"status"`
-				Currency string `json:"currency"`
-			} `json:"bnb2"`
-			Sbkr struct {
-				Currency string `json:"currency"`
-				Status   string `json:"status"`
-			} `json:"sbkr"`
-			Rfc struct {
-				Currency string `json:"currency"`
-				Status   string `json:"status"`
-			} `json:"rfc"`
-			Pand struct {
-				Status   string `json:"status"`
-				Currency string `json:"currency"`
-			} `json:"pand"`
-			Kqbe struct {
-				Status   string `json:"status"`
-				Currency string `json:"currency"`
-			} `json:"kqbe"`
-			Bud struct {
-				Currency string `json:"currency"`
-				Status   string `json:"status"`
-			} `json:"bud"`
-			Ini struct {
-				Status   string `json:"status"`
-				Currency string `json:"currency"`
-			} `json:"ini"`
-			Adv struct {
-				Status   string `json:"status"`
-				Currency string `json:"currency"`
-			} `json:"adv"`
-			Cs struct {
-				Currency string `json:"currency"`
-				Status   string `json:"status"`
-			} `json:"cs"`
-			Ysh struct {
-				Currency string `json:"currency"`
-				Status   string `json:"status"`
-			} `json:"ysh"`
-			Etb struct {
-				Currency string `json:"currency"`
-				Status   string `json:"status"`
-			} `json:"etb"`
-			Exp struct {
-				Status   string `json:"status"`
-				Currency string `json:"currency"`
-			} `json:"exp"`
-			Evry struct {
-				Status   string `json:"status"`
-				Currency string `json:"currency"`
-			} `json:"evry"`
-			Wix struct {
-				Status   string `json:"status"`
-				Currency string `json:"currency"`
-			} `json:"wix"`
-			Luna struct {
-				Status   string `json:"status"`
-				Currency string `json:"currency"`
-			} `json:"luna"`
-			Rsrv struct {
-				Status   string `json:"status"`
-				Currency string `json:"currency"`
-			} `json:"rsrv"`
-			Vrbo struct {
-				Currency string `json:"currency"`
-				Status   string `json:"status"`
-			} `json:"vrbo"`
-			Bd struct {
-				Status   string `json:"status"`
-				Currency string `json:"currency"`
-			} `json:"bd"`
-			Bh struct {
-				Currency string `json:"currency"`
-				Status   string `json:"status"`
-			} `json:"bh"`
-			All struct {
-				Status   string `json:"status"`
-				Currency string `json:"currency"`
-			} `json:"all"`
-			R2N struct {
-				Currency string `json:"currency"`
-				Status   string `json:"status"`
-			} `json:"r2n"`
-			Hw struct {
-				Status   string `json:"status"`
-				Currency string `json:"currency"`
-			} `json:"hw"`
-			Bal struct {
-				Currency string `json:"currency"`
-				Status   string `json:"status"`
-			} `json:"bal"`
-			Bv struct {
-				Currency string `json:"currency"`
-				Status   string `json:"status"`
-			} `json:"bv"`
-			Fam struct {
-				Status   string `json:"status"`
-				Currency string `json:"currency"`
-			} `json:"fam"`
-			Hr struct {
-				Currency string `json:"currency"`
-				Status   string `json:"status"`
-			} `json:"hr"`
-			Ote struct {
-				Currency string `json:"currency"`
-				Status   string `json:"status"`
-			} `json:"ote"`
-			Tavr struct {
-				Status   string `json:"status"`
-				Currency string `json:"currency"`
-			} `json:"tavr"`
-			Mega struct {
-				Status   string `json:"status"`
-				Currency string `json:"currency"`
-			} `json:"mega"`
-			Bdrm struct {
-				Currency string `json:"currency"`
-				Status   string `json:"status"`
-			} `json:"bdrm"`
-			Odi struct {
-				Currency string `json:"currency"`
-				Status   string `json:"status"`
-			} `json:"odi"`
-			Iwb struct {
-				Currency string `json:"currency"`
-				Status   string `json:"status"`
-			} `json:"iwb"`
-			Ddhm struct {
-				Currency string `json:"currency"`
-				Status   string `json:"status"`
-			} `json:"ddhm"`
-			Ht struct {
-				Status   string `json:"status"`
-				Currency string `json:"currency"`
-			} `json:"ht"`
-			Skd struct {
-				Status   string `json:"status"`
-				Currency string `json:"currency"`
-			} `json:"skd"`
-			Hcu struct {
-				Currency string `json:"currency"`
-				Status   string `json:"status"`
-			} `json:"hcu"`
-			Hola struct {
-				Status   string `json:"status"`
-				Currency string `json:"currency"`
-			} `json:"hola"`
-			Sawa struct {
-				Status   string `json:"status"`
-				Currency string `json:"currency"`
-			} `json:"sawa"`
-			Tom struct {
-				Status   string `json:"status"`
-				Currency string `json:"currency"`
-			} `json:"tom"`
-			Esc struct {
-				Status   string `json:"status"`
-				Currency string `json:"currency"`
-			} `json:"esc"`
-			Cb struct {
-				Status   string `json:"status"`
-				Currency string `json:"currency"`
-			} `json:"cb"`
-			Ohma struct {
-				Currency string `json:"currency"`
-				Status   string `json:"status"`
-			} `json:"ohma"`
-			Ya struct {
-				Currency string `json:"currency"`
-				Status   string `json:"status"`
-			} `json:"ya"`
-			Sole struct {
-				Status   string `json:"status"`
-				Currency string `json:"currency"`
-			} `json:"sole"`
-			Aveo struct {
-				Currency string `json:"currency"`
-				Status   string `json:"status"`
-			} `json:"aveo"`
-			Coco struct {
-				Currency string `json:"currency"`
-				Status   string `json:"status"`
-			} `json:"coco"`
-			Iper struct {
-				Status   string `json:"status"`
-				Currency string `json:"currency"`
-			} `json:"iper"`
-			Bbit struct {
-				Currency string `json:"currency"`
-				Status   string `json:"status"`
-			} `json:"bbit"`
-			Adsh struct {
-				Status   string `json:"status"`
-				Currency string `json:"currency"`
-			} `json:"adsh"`
-			Ktel struct {
-				Status   string `json:"status"`
-				Currency string `json:"currency"`
-			} `json:"ktel"`
-			Akt struct {
-				Status   string `json:"status"`
-				Currency string `json:"currency"`
-			} `json:"akt"`
-			Lvur struct {
-				Currency string `json:"currency"`
-				Status   string `json:"status"`
-			} `json:"lvur"`
-			Nom struct {
-				Status   string `json:"status"`
-				Currency string `json:"currency"`
-			} `json:"nom"`
-			Hi struct {
-				Status   string `json:"status"`
-				Currency string `json:"currency"`
-			} `json:"hi"`
-			Vive struct {
-				Status   string `json:"status"`
-				Currency string `json:"currency"`
-			} `json:"vive"`
-			Lsbv struct {
-				Status   string `json:"status"`
-				Currency string `json:"currency"`
-			} `json:"lsbv"`
-			Stya struct {
-				Status   string `json:"status"`
-				Currency string `json:"currency"`
-			} `json:"stya"`
-			Wpk struct {
-				Currency string `json:"currency"`
-				Status   string `json:"status"`
-			} `json:"wpk"`
-			Sur struct {
-				Status   string `json:"status"`
-				Currency string `json:"currency"`
-			} `json:"sur"`
-			Zldv struct {
-				Currency string `json:"currency"`
-				Status   string `json:"status"`
-			} `json:"zldv"`
-			Kni struct {
-				Status   string `json:"status"`
-				Currency string `json:"currency"`
-			} `json:"kni"`
-			Gta struct {
-				Status   string `json:"status"`
-				Currency string `json:"currency"`
-			} `json:"gta"`
-			Max struct {
-				Status   string `json:"status"`
-				Currency string `json:"currency"`
-			} `json:"max"`
-			Goi struct {
-				Status   string `json:"status"`
-				Currency string `json:"currency"`
-			} `json:"goi"`
-			Hb struct {
-				Currency string `json:"currency"`
-				Status   string `json:"status"`
-			} `json:"hb"`
-			Ctr struct {
-				Status   string `json:"status"`
-				Currency string `json:"currency"`
-			} `json:"ctr"`
-			Hom struct {
-				Status   string `json:"status"`
-				Currency string `json:"currency"`
-			} `json:"hom"`
-			Bbnl struct {
-				Status   string `json:"status"`
-				Currency string `json:"currency"`
-			} `json:"bbnl"`
-			Lota struct {
-				Currency string `json:"currency"`
-				Status   string `json:"status"`
-			} `json:"lota"`
-			Lmg struct {
-				Status   string `json:"status"`
-				Currency string `json:"currency"`
-			} `json:"lmg"`
-			Ta struct {
-				Status   string `json:"status"`
-				Currency string `json:"currency"`
-			} `json:"ta"`
-			Bool struct {
-				Status   string `json:"status"`
-				Currency string `json:"currency"`
-			} `json:"bool"`
-			Trab struct {
-				Currency string `json:"currency"`
-				Status   string `json:"status"`
-			} `json:"trab"`
-			Ibc struct {
-				Status   string `json:"status"`
-				Currency string `json:"currency"`
-			} `json:"ibc"`
-			Oa struct {
-				Status   string `json:"status"`
-				Currency string `json:"currency"`
-			} `json:"oa"`
-			Hotq struct {
-				Status   string `json:"status"`
-				Currency string `json:"currency"`
-			} `json:"hotq"`
-			Pzg struct {
-				Currency string `json:"currency"`
-				Status   string `json:"status"`
-			} `json:"pzg"`
-			Hou struct {
-				Status   string `json:"status"`
-				Currency string `json:"currency"`
-			} `json:"hou"`
-			Hw2 struct {
-				Currency string `json:"currency"`
-				Status   string `json:"status"`
-			} `json:"hw2"`
+			Koh    Channel `json:"koh"`
+			Asyo   Channel `json:"asyo"`
+			Vjo    Channel `json:"vjo"`
+			Bb     Channel `json:"bb"`
+			Mal    Channel `json:"mal"`
+			Outp   Channel `json:"outp"`
+			Trav   Channel `json:"trav"`
+			Mcs    Channel `json:"mcs"`
+			Ago    Channel `json:"ago"`
+			Hcu2   Channel `json:"hcu2"`
+			Buen   Channel `json:"buen"`
+			Myb    Channel `json:"myb"`
+			Bkb    Channel `json:"bkb"`
+			Ptch   Channel `json:"ptch"`
+			Bp     Channel `json:"bp"`
+			Lmin   Channel `json:"lmin"`
+			G2I    Channel `json:"g2i"`
+			Htrv   Channel `json:"htrv"`
+			Clt    Channel `json:"clt"`
+			Han    Channel `json:"han"`
+			Yoho   Channel `json:"yoho"`
+			Hde    Channel `json:"hde"`
+			Wanu   Channel `json:"wanu"`
+			Hd     Channel `json:"hd"`
+			Orb    Channel `json:"orb"`
+			Rrep   Channel `json:"rrep"`
+			Loc    Channel `json:"loc"`
+			Air    Channel `json:"air"`
+			Deco   Channel `json:"deco"`
+			Btob   Channel `json:"btob"`
+			Enz    Channel `json:"enz"`
+			Tpvl   Channel `json:"tpvl"`
+			Hbe    Channel `json:"hbe"`
+			Saas   Channel `json:"saas"`
+			Liko   Channel `json:"liko"`
+			Fk     Channel `json:"fk"`
+			Hhb    Channel `json:"hhb"`
+			Buun   Channel `json:"buun"`
+			Ost    Channel `json:"ost"`
+			Hc     Channel `json:"hc"`
+			Gom    Channel `json:"gom"`
+			Vhh    Channel `json:"vhh"`
+			Prsc   Channel `json:"prsc"`
+			Eb     Channel `json:"eb"`
+			NineFl Channel `json:"9fl"`
+			Mrbb   Channel `json:"mrbb"`
+			Pool   Channel `json:"pool"`
+			Bole   Channel `json:"bole"`
+			Whoo   Channel `json:"whoo"`
+			Eget   Channel `json:"eget"`
+			Hotu   Channel `json:"hotu"`
+			Inst   Channel `json:"inst"`
+			Hs     Channel `json:"hs"`
+			Grup   Channel `json:"grup"`
+			Xmlt   Channel `json:"xmlt"`
+			Vaca   Channel `json:"vaca"`
+			Net    Channel `json:"net"`
+			Tmd    Channel `json:"tmd"`
+			Loop   Channel `json:"loop"`
+			Bon    Channel `json:"bon"`
+			Hoga   Channel `json:"hoga"`
+			Ct     Channel `json:"ct"`
+			Kch    Channel `json:"kch"`
+			Art    Channel `json:"art"`
+			Tlok   Channel `json:"tlok"`
+			Gr     Channel `json:"gr"`
+			Trpz   Channel `json:"trpz"`
+			Hb2    Channel `json:"hb2"`
+			Eba    Channel `json:"eba"`
+			Hort   Channel `json:"hort"`
+			Rep    Channel `json:"rep"`
+			Bnw    Channel `json:"bnw"`
+			Vcay   Channel `json:"vcay"`
+			Cwd    Channel `json:"cwd"`
+			Hrs    Channel `json:"hrs"`
+			Tri    Channel `json:"tri"`
+			Apal   Channel `json:"apal"`
+			Boo    Channel `json:"boo"`
+			Snrg   Channel `json:"snrg"`
+			Lako   Channel `json:"lako"`
+			Toqt   Channel `json:"toqt"`
+			Chot   Channel `json:"chot"`
+			Pre    Channel `json:"pre"`
+			Cozy   Channel `json:"cozy"`
+			Advt   Channel `json:"advt"`
+			Wim    Channel `json:"wim"`
+			Adve   Channel `json:"adve"`
+			Tob    Channel `json:"tob"`
+			Ho     Channel `json:"ho"`
+			Hopa   Channel `json:"hopa"`
+			Flh    Channel `json:"flh"`
+			Hipc   Channel `json:"hipc"`
+			Hoca   Channel `json:"hoca"`
+			Rtel   Channel `json:"rtel"`
+			Mmt    Channel `json:"mmt"`
+			Enbc   Channel `json:"enbc"`
+			Lr     Channel `json:"lr"`
+			Bnb    Channel `json:"bnb"`
+			Rec    Channel `json:"rec"`
+			H2H    Channel `json:"h2h"`
+			Hand   Channel `json:"hand"`
+			Hmi    Channel `json:"hmi"`
+			Bnb2   Channel `json:"bnb2"`
+			Sbkr   Channel `json:"sbkr"`
+			Rfc    Channel `json:"rfc"`
+			Pand   Channel `json:"pand"`
+			Kqbe   Channel `json:"kqbe"`
+			Bud    Channel `json:"bud"`
+			Ini    Channel `json:"ini"`
+			Adv    Channel `json:"adv"`
+			Cs     Channel `json:"cs"`
+			Ysh    Channel `json:"ysh"`
+			Etb    Channel `json:"etb"`
+			Exp    Channel `json:"exp"`
+			Evry   Channel `json:"evry"`
+			Wix    Channel `json:"wix"`
+			Luna   Channel `json:"luna"`
+			Rsrv   Channel `json:"rsrv"`
+			Vrbo   Channel `json:"vrbo"`
+			Bd     Channel `json:"bd"`
+			Bh     Channel `json:"bh"`
+			All    Channel `json:"all"`
+			R2N    Channel `json:"r2n"`
+			Hw     Channel `json:"hw"`
+			Bal    Channel `json:"bal"`
+			Bv     Channel `json:"bv"`
+			Fam    Channel `json:"fam"`
+			Hr     Channel `json:"hr"`
+			Ote    Channel `json:"ote"`
+			Tavr   Channel `json:"tavr"`
+			Mega   Channel `json:"mega"`
+			Bdrm   Channel `json:"bdrm"`
+			Odi    Channel `json:"odi"`
+			Iwb    Channel `json:"iwb"`
+			Ddhm   Channel `json:"ddhm"`
+			Ht     Channel `json:"ht"`
+			Skd    Channel `json:"skd"`
+			Hcu    Channel `json:"hcu"`
+			Hola   Channel `json:"hola"`
+			Sawa   Channel `json:"sawa"`
+			Tom    Channel `json:"tom"`
+			Esc    Channel `json:"esc"`
+			Cb     Channel `json:"cb"`
+			Ohma   Channel `json:"ohma"`
+			Ya     Channel `json:"ya"`
+			Sole   Channel `json:"sole"`
+			Aveo   Channel `json:"aveo"`
+			Coco   Channel `json:"coco"`
+			Iper   Channel `json:"iper"`
+			Bbit   Channel `json:"bbit"`
+			Adsh   Channel `json:"adsh"`
+			Ktel   Channel `json:"ktel"`
+			Akt    Channel `json:"akt"`
+			Lvur   Channel `json:"lvur"`
+			Nom    Channel `json:"nom"`
+			Hi     Channel `json:"hi"`
+			Vive   Channel `json:"vive"`
+			Lsbv   Channel `json:"lsbv"`
+			Stya   Channel `json:"stya"`
+			Wpk    Channel `json:"wpk"`
+			Sur    Channel `json:"sur"`
+			Zldv   Channel `json:"zldv"`
+			Kni    Channel `json:"kni"`
+			Gta    Channel `json:"gta"`
+			Max    Channel `json:"max"`
+			Goi    Channel `json:"goi"`
+			Hb     Channel `json:"hb"`
+			Ctr    Channel `json:"ctr"`
+			Hom    Channel `json:"hom"`
+			Bbnl   Channel `json:"bbnl"`
+			Lota   Channel `json:"lota"`
+			Lmg    Channel `json:"lmg"`
+			Ta     Channel `json:"ta"`
+			Bool   Channel `json:"bool"`
+			Trab   Channel `json:"trab"`
+			Ibc    Channel `json:"ibc"`
+			Oa     Channel `json:"oa"`
+			Hotq   Channel `json:"hotq"`
+			Pzg    Channel `json:"pzg"`
+			Hou    Channel `json:"hou"`
+			Hw2    Channel `json:"hw2"`
 		} `json:"Channels"`
 	} `json:"Properties"`
 	Success bool `json:"Success"`
