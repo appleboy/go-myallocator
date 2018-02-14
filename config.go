@@ -17,4 +17,6 @@ const (
 	AssociatePropertyToPMSURL = "https://api.myallocator.com/pms/v201408/json/AssociatePropertyToPMS"
 	// BookingListURL is BookingList API URL
 	BookingListURL = "https://api.myallocator.com/pms/v201408/json/BookingList"
+	// BookingCancelURL allows you to cancel a booking both in myallocator and the channel.
+	BookingCancelURL = "https://api.myallocator.com/pms/v201408/json/BookingCancel"
 )

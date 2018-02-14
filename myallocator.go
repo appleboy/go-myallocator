@@ -86,6 +86,59 @@ type AssociateUserToPMSResponse struct {
 	AuthUserToken string `json:"Auth/UserToken"`
 }
 
+// BookingCancelReq allows you to cancel a booking both in myallocator and the channel.
+// Only very few channels support this, check the 'api_cancellation' flag on the ChannelList
+// call to see which channels support this.
+type BookingCancelReq struct {
+	AuthUserToken      string `json:"Auth/UserToken"`
+	AuthVendorID       string `json:"Auth/VendorId"`
+	AuthVendorPassword string `json:"Auth/VendorPassword"`
+	AuthPropertyID     string `json:"Auth/PropertyId"`
+	MyAllocatorID      string `json:"MyAllocatorId"`
+	CancellationReason string `json:"CancellationReason"`
+}
+
+// BookingCancelResp for booking cacnel response.
+type BookingCancelResp struct {
+	StartDate string `json:"start_date"`
+	Success   bool   `json:"Success"`
+	QueryType string `json:"query_type"`
+	Bookings  []struct {
+		MyallocatorModificationTime string `json:"MyallocatorModificationTime"`
+		MyallocatorCreationTime     string `json:"MyallocatorCreationTime"`
+		PropertyID                  int    `json:"PropertyId"`
+		IsModification              bool   `json:"IsModification"`
+		IsCancellation              bool   `json:"IsCancellation"`
+		Acknowledged                bool   `json:"Acknowledged"`
+		MaCallbackQbid              int    `json:"ma_callback_qbid"`
+		MyallocatorModificationDate string `json:"MyallocatorModificationDate"`
+		MyallocatorCreationDate     string `json:"MyallocatorCreationDate"`
+		Channel                     string `json:"Channel"`
+		MyallocatorID               string `json:"MyallocatorId"`
+		MarkedAsRead                bool   `json:"MarkedAsRead"`
+		Version                     int    `json:"Version"`
+		Customers                   []struct {
+			CustomerNote  string `json:"CustomerNote"`
+			CustomerEmail string `json:"CustomerEmail"`
+			CustomerLName string `json:"CustomerLName"`
+			CustomerPhone string `json:"CustomerPhone"`
+		} `json:"Customers"`
+		StartDate string `json:"StartDate"`
+		OrderID   string `json:"OrderId"`
+		Rooms     []struct {
+			StartDate              string        `json:"StartDate"`
+			RoomTypeIds            []int         `json:"RoomTypeIds"`
+			ChannelRoomType        string        `json:"ChannelRoomType"`
+			MyallocatorRateplanIds []interface{} `json:"MyallocatorRateplanIds"`
+			EndDate                string        `json:"EndDate"`
+			Units                  string        `json:"Units"`
+			RoomDesc               string        `json:"RoomDesc"`
+		} `json:"Rooms"`
+		EndDate string `json:"EndDate"`
+	} `json:"Bookings"`
+	EndDate string `json:"end_date"`
+}
+
 // VendorSetRequest Use this call if you're using booking callbacks to set the callback URL and password.
 // See https://myallocator.github.io/apidocs/#api-3_API_Methods-VendorSet
 type VendorSetRequest struct {
@@ -404,6 +457,21 @@ func (m *MyAllocator) BookingList(req *BookingListReq) (*BookingListRes, error) 
 	res := new(BookingListRes)
 
 	if err := SendRequest(BookingListURL, req, res, m.Debug); err != nil {
+		return nil, err
+	}
+
+	return res, nil
+}
+
+// BookingCancel allows you to cancel a booking both in myallocator
+// and the channel. Only very few channels support this.
+func (m *MyAllocator) BookingCancel(req *BookingCancelReq) (*BookingCancelResp, error) {
+	req.AuthVendorID = m.AuthVendorID
+	req.AuthVendorPassword = m.AuthVendorPassword
+
+	res := new(BookingCancelResp)
+
+	if err := SendRequest(BookingCancelURL, req, res, m.Debug); err != nil {
 		return nil, err
 	}
 
