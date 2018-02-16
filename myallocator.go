@@ -104,37 +104,54 @@ type BookingCancelResp struct {
 	Success   bool   `json:"Success"`
 	QueryType string `json:"query_type"`
 	Bookings  []struct {
-		MyallocatorModificationTime string `json:"MyallocatorModificationTime"`
-		MyallocatorCreationTime     string `json:"MyallocatorCreationTime"`
-		PropertyID                  int    `json:"PropertyId"`
-		IsModification              bool   `json:"IsModification"`
-		IsCancellation              bool   `json:"IsCancellation"`
-		Acknowledged                bool   `json:"Acknowledged"`
-		MaCallbackQbid              int    `json:"ma_callback_qbid"`
-		MyallocatorModificationDate string `json:"MyallocatorModificationDate"`
-		MyallocatorCreationDate     string `json:"MyallocatorCreationDate"`
-		Channel                     string `json:"Channel"`
-		MyallocatorID               string `json:"MyallocatorId"`
-		MarkedAsRead                bool   `json:"MarkedAsRead"`
-		Version                     int    `json:"Version"`
-		Customers                   []struct {
-			CustomerNote  string `json:"CustomerNote"`
-			CustomerEmail string `json:"CustomerEmail"`
-			CustomerLName string `json:"CustomerLName"`
-			CustomerPhone string `json:"CustomerPhone"`
+		MyallocatorID           string `json:"MyallocatorId"`
+		OrderSource             string `json:"OrderSource"`
+		MyallocatorCreationDate string `json:"MyallocatorCreationDate"`
+		Version                 int    `json:"Version"`
+		IsModification          bool   `json:"IsModification"`
+		MyallocatorCreationTime string `json:"MyallocatorCreationTime"`
+		TotalCurrency           string `json:"TotalCurrency"`
+		OrderTime               string `json:"OrderTime"`
+		Channel                 string `json:"Channel"`
+		IsCancellation          bool   `json:"IsCancellation"`
+		Customers               []struct {
+			CustomerIP          string `json:"CustomerIP"`
+			CustomerNote        string `json:"CustomerNote"`
+			CustomerLName       string `json:"CustomerLName"`
+			CustomerPhone       string `json:"CustomerPhone"`
+			CustomerNationality string `json:"CustomerNationality"`
+			CustomerFName       string `json:"CustomerFName"`
+			CustomerEmail       string `json:"CustomerEmail"`
 		} `json:"Customers"`
-		StartDate string `json:"StartDate"`
-		OrderID   string `json:"OrderId"`
-		Rooms     []struct {
-			StartDate              string        `json:"StartDate"`
-			RoomTypeIds            []int         `json:"RoomTypeIds"`
-			ChannelRoomType        string        `json:"ChannelRoomType"`
-			MyallocatorRateplanIds []interface{} `json:"MyallocatorRateplanIds"`
-			EndDate                string        `json:"EndDate"`
+		Rooms []struct {
 			Units                  string        `json:"Units"`
-			RoomDesc               string        `json:"RoomDesc"`
+			EndDate                string        `json:"EndDate"`
+			RoomTypeIds            []int         `json:"RoomTypeIds"`
+			MyallocatorRateplanIds []interface{} `json:"MyallocatorRateplanIds"`
+			RateID                 string        `json:"RateId"`
+			StartDate              string        `json:"StartDate"`
+			Price                  int           `json:"Price"`
+			RateDesc               string        `json:"RateDesc"`
+			ChannelRoomType        string        `json:"ChannelRoomType"`
+			Currency               string        `json:"Currency"`
+			DayRates               []struct {
+				Date        string      `json:"Date"`
+				Currency    string      `json:"Currency"`
+				Rate        int         `json:"Rate"`
+				Description interface{} `json:"Description"`
+			} `json:"DayRates"`
 		} `json:"Rooms"`
-		EndDate string `json:"EndDate"`
+		MarkedAsRead                bool   `json:"MarkedAsRead"`
+		MyallocatorModificationDate string `json:"MyallocatorModificationDate"`
+		OrderDate                   string `json:"OrderDate"`
+		CancellationReason          string `json:"CancellationReason"`
+		StartDate                   string `json:"StartDate"`
+		Acknowledged                bool   `json:"Acknowledged"`
+		TotalPrice                  string `json:"TotalPrice"`
+		EndDate                     string `json:"EndDate"`
+		PropertyID                  int    `json:"PropertyId"`
+		MyallocatorModificationTime string `json:"MyallocatorModificationTime"`
+		OrderID                     string `json:"OrderId"`
 	} `json:"Bookings"`
 	EndDate string `json:"end_date"`
 }
