@@ -68,6 +68,10 @@ type ARIRequest struct {
 	AuthVendorPassword string       `json:"Auth/VendorPassword"`
 	Channels           []string     `json:"Channels"`
 	Allocations        []Allocation `json:"Allocations"`
+	Options            struct {
+		QueryForStatus     bool `json:"QueryForStatus"`
+		IgnoreInvalidRooms bool `json:"IgnoreInvalidRooms"`
+	} `json:"Options"`
 }
 
 // AssociateUserToPMSRequest creates a permanent link between an existing myallocator user and a PMS Vendor.
