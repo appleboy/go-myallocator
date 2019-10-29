@@ -59,19 +59,24 @@ type ARIUpdateResponse struct {
 	} `json:"Options"`
 }
 
+// ARIRequestOptions ....
+// If QueryForStatus is true then the ARIUpdateResponse will contain the additional parameter UpdateId, which is needed for ARIUpdateStatus.
+// It is extremely likely that blocking updates will be phased out in favour of QueryForStatus so we highly recommend that you send only non-blocking ARIUpdate requests and poll myallocator using ARIUpdateStatus.
+type ARIRequestOptions struct {
+	QueryForStatus     bool `json:"QueryForStatus"`
+	IgnoreInvalidRooms bool `json:"IgnoreInvalidRooms"`
+}
+
 // ARIRequest ARIUpdate Rule
 // https://myallocator.github.io/apidocs/#api-3_API_Methods-ARIUpdate
 type ARIRequest struct {
-	AuthUserToken      string       `json:"Auth/UserToken"`
-	AuthPropertyID     string       `json:"Auth/PropertyId"`
-	AuthVendorID       string       `json:"Auth/VendorId"`
-	AuthVendorPassword string       `json:"Auth/VendorPassword"`
-	Channels           []string     `json:"Channels"`
-	Allocations        []Allocation `json:"Allocations"`
-	Options            struct {
-		QueryForStatus     bool `json:"QueryForStatus"`
-		IgnoreInvalidRooms bool `json:"IgnoreInvalidRooms"`
-	} `json:"Options"`
+	AuthUserToken      string            `json:"Auth/UserToken"`
+	AuthPropertyID     string            `json:"Auth/PropertyId"`
+	AuthVendorID       string            `json:"Auth/VendorId"`
+	AuthVendorPassword string            `json:"Auth/VendorPassword"`
+	Channels           []string          `json:"Channels"`
+	Allocations        []Allocation      `json:"Allocations"`
+	Options            ARIRequestOptions `json:"Options"`
 }
 
 // AssociateUserToPMSRequest creates a permanent link between an existing myallocator user and a PMS Vendor.
