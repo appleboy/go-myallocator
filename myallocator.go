@@ -46,9 +46,25 @@ type ARIUpdateMessage struct {
 	MinStay   string `json:"MinStay"`
 }
 
+// ErrResponse error format
+// {
+//   "Errors": [
+//       {
+//           "ErrorTicket": "D13BAC04-1234-5678-804B-F5140B37646E",
+//           "ErrorMsg": "No such booking id",
+//           "ErrorId": "30"
+//       }
+//   ]
+// }
+type ErrResponse struct {
+	ErrorTicket string `json:"ErrorTicket"`
+	ErrorMsg    string `json:"ErrorMsg"`
+	ErrorID     string `json:"ErrorId"`
+}
+
 // ARIUpdateResponse ARI Update Response
 type ARIUpdateResponse struct {
-	Errors   []interface{}      `json:"Errors"`
+	Errors   []ErrResponse      `json:"Errors"`
 	Messages []ARIUpdateMessage `json:"Messages"`
 	Success  bool               `json:"Success"`
 	Channels struct {
