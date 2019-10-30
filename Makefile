@@ -1,55 +1,55 @@
-.PHONY: test fmt vet errcheck lint embedmd
-
 GOFMT ?= gofmt "-s"
-GOFILES := $(shell find . -name "*.go" -type f -not -path "./vendor/*")
-PACKAGES ?= $(shell go list ./... | grep -v /vendor/)
+GO ?= go
 
-all: test
+TARGETS ?= linux darwin windows
+ARCHS ?= amd64 386
+PACKAGES ?= $(shell $(GO) list ./...)
+SOURCES ?= $(shell find . -name "*.go" -type f)
+TAGS ?=
+LDFLAGS ?= -X 'main.Version=$(VERSION)'
 
-.PHONY: fmt
+ifneq ($(shell uname), Darwin)
+	EXTLDFLAGS = -extldflags "-static" $(null)
+else
+	EXTLDFLAGS =
+endif
+
+all: build
+
 fmt:
-	$(GOFMT) -w $(GOFILES)
+	$(GOFMT) -w $(SOURCES)
+
+vet:
+	$(GO) vet $(PACKAGES)
+
+lint:
+	@hash revive > /dev/null 2>&1; if [ $$? -ne 0 ]; then \
+		$(GO) get -u github.com/mgechev/revive; \
+	fi
+	revive -config .revive.toml ./... || exit 1
+
+.PHONY: misspell-check
+misspell-check:
+	@hash misspell > /dev/null 2>&1; if [ $$? -ne 0 ]; then \
+		$(GO) get -u github.com/client9/misspell/cmd/misspell; \
+	fi
+	misspell -error $(SOURCES)
+
+.PHONY: misspell
+misspell:
+	@hash misspell > /dev/null 2>&1; if [ $$? -ne 0 ]; then \
+		$(GO) get -u github.com/client9/misspell/cmd/misspell; \
+	fi
+	misspell -w $(SOURCES)
 
 .PHONY: fmt-check
 fmt-check:
-	@diff=$$($(GOFMT) -d $(GOFILES)); \
+	@diff=$$($(GOFMT) -d $(SOURCES)); \
 	if [ -n "$$diff" ]; then \
 		echo "Please run 'make fmt' and commit the result:"; \
 		echo "$${diff}"; \
 		exit 1; \
 	fi;
 
-.PHONY: vet
-vet:
-	go vet $(PACKAGES)
-
-errcheck:
-	@hash errcheck > /dev/null 2>&1; if [ $$? -ne 0 ]; then \
-		go get -u github.com/kisielk/errcheck; \
-	fi
-	errcheck $(PACKAGES)
-
-lint:
-	@hash golint > /dev/null 2>&1; if [ $$? -ne 0 ]; then \
-		go get -u github.com/golang/lint/golint; \
-	fi
-	for PKG in $(PACKAGES); do golint -set_exit_status $$PKG || exit 1; done;
-
-unconvert:
-	@hash unconvert > /dev/null 2>&1; if [ $$? -ne 0 ]; then \
-		go get -u github.com/mdempsky/unconvert; \
-	fi
-	for PKG in $(PACKAGES); do unconvert -v $$PKG || exit 1; done;
-
-embedmd:
-	@hash embedmd > /dev/null 2>&1; if [ $$? -ne 0 ]; then \
-		go get -u github.com/campoy/embedmd; \
-	fi
-	embedmd -d *.md
-
 test: fmt-check
-	for PKG in $(PACKAGES); do go test -v -cover -coverprofile $$GOPATH/src/$$PKG/coverage.txt $$PKG || exit 1; done;
-
-clean:
-	go clean -x -i ./...
-	rm -rf coverage.txt
+	@$(GO) test -v -cover -coverprofile coverage.txt $(PACKAGES) && echo "\n==>\033[32m Ok\033[m\n" || exit 1
