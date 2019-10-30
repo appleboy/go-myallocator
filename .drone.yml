@@ -13,7 +13,6 @@ steps:
   commands:
   - make vet
   - make lint
-  - make embedmd
   - make test
 
 ...
