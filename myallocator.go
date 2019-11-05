@@ -59,7 +59,7 @@ type ARIUpdateMessage struct {
 type ErrResponse struct {
 	ErrorTicket string `json:"ErrorTicket"`
 	ErrorMsg    string `json:"ErrorMsg"`
-	ErrorID     string `json:"ErrorId"`
+	ErrorID     int    `json:"ErrorId"`
 }
 
 // ARIUpdateResponse ARI Update Response
