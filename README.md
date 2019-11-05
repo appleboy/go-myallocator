@@ -18,5 +18,4 @@ Support the following API.
 * [x] RoomAvailabilityList
 * [x] ChannelList
 * [x] PropertyChannelList
-* [x] AssociatePropertyToPMS
 * [x] BookingList

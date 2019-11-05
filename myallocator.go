@@ -276,24 +276,6 @@ type PropertyChannelListReq struct {
 	AuthVendorPassword string `json:"Auth/VendorPassword"`
 }
 
-// AssociatePropertyToPMSReq Creates a permanent link between an existing myallocator property and a PMS Vendor.
-// https://myallocator.github.io/apidocs/#api-3_API_Methods-AssociatePropertyToPMS
-type AssociatePropertyToPMSReq struct {
-	AuthUserID         string `json:"Auth/UserId"`
-	AuthUserPassword   string `json:"Auth/UserPassword"`
-	AuthVendorID       string `json:"Auth/VendorId"`
-	AuthVendorPassword string `json:"Auth/VendorPassword"`
-	AuthPropertyID     string `json:"Auth/PropertyId"`
-	PMSPropertyID      string `json:"PMSPropertyId,omitempty"`
-}
-
-// AssociatePropertyToPMSRes for AssociatePropertyToPMS response
-type AssociatePropertyToPMSRes struct {
-	Success           bool   `json:"Success"`
-	AuthPropertyToken string `json:"Auth/PropertyToken"`
-	Warning           string `json:"warning"`
-}
-
 // BookingListReq allows you to query for bookings made to a specific property by booking date,
 // modification date or arrival date.
 // https://myallocator.github.io/apidocs/#api-3_API_Methods-BookingList
@@ -470,20 +452,6 @@ func (m *MyAllocator) PropertyChannelList(req *PropertyChannelListReq) (*Propert
 	res := new(PropertyChannelListRes)
 
 	if err := SendRequest(PropertyChannelListURL, req, res, m.Debug); err != nil {
-		return nil, err
-	}
-
-	return res, nil
-}
-
-// AssociatePropertyToPMS creates a permanent link between an existing myallocator property and a PMS Vendor.
-func (m *MyAllocator) AssociatePropertyToPMS(req *AssociatePropertyToPMSReq) (*AssociatePropertyToPMSRes, error) {
-	req.AuthVendorID = m.AuthVendorID
-	req.AuthVendorPassword = m.AuthVendorPassword
-
-	res := new(AssociatePropertyToPMSRes)
-
-	if err := SendRequest(AssociatePropertyToPMSURL, req, res, m.Debug); err != nil {
 		return nil, err
 	}
 
