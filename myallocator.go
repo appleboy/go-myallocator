@@ -67,9 +67,8 @@ type ARIUpdateResponse struct {
 	Errors   []ErrResponse      `json:"Errors"`
 	Messages []ARIUpdateMessage `json:"Messages"`
 	Success  bool               `json:"Success"`
-	Channels struct {
-	} `json:"Channels"`
-	UpdateID int `json:"UpdateId"`
+	Channels struct{}           `json:"Channels"`
+	UpdateID interface{}        `json:"UpdateId"`
 	Options  struct {
 		FIUA int `json:"FIUA"`
 	} `json:"Options"`
