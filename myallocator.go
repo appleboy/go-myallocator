@@ -3,6 +3,7 @@ package ma
 import (
 	"crypto/tls"
 	"errors"
+	"time"
 
 	"github.com/astaxie/beego/httplib"
 )
@@ -498,6 +499,7 @@ func (m *MyAllocator) SetDebug(enable bool) *MyAllocator {
 func SendRequest(url string, body interface{}, res interface{}, debug bool) error {
 	req := httplib.Post(url).Debug(debug)
 	req.SetTLSClientConfig(&tls.Config{InsecureSkipVerify: true})
+	req.SetTimeout(5*time.Second, 5*time.Second)
 	req.JSONBody(body)
 	return req.ToJSON(res)
 }
