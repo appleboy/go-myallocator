@@ -48,15 +48,16 @@ type ARIUpdateMessage struct {
 }
 
 // ErrResponse error format
-// {
-//   "Errors": [
-//       {
-//           "ErrorTicket": "D13BAC04-1234-5678-804B-F5140B37646E",
-//           "ErrorMsg": "No such booking id",
-//           "ErrorId": "30"
-//       }
-//   ]
-// }
+//
+//	{
+//	  "Errors": [
+//	      {
+//	          "ErrorTicket": "D13BAC04-1234-5678-804B-F5140B37646E",
+//	          "ErrorMsg": "No such booking id",
+//	          "ErrorId": "30"
+//	      }
+//	  ]
+//	}
 type ErrResponse struct {
 	ErrorTicket string `json:"ErrorTicket"`
 	ErrorMsg    string `json:"ErrorMsg"`
@@ -76,8 +77,10 @@ type ARIUpdateResponse struct {
 }
 
 // ARIRequestOptions ....
-// If QueryForStatus is true then the ARIUpdateResponse will contain the additional parameter UpdateId, which is needed for ARIUpdateStatus.
-// It is extremely likely that blocking updates will be phased out in favour of QueryForStatus so we highly recommend that you send only non-blocking ARIUpdate requests and poll myallocator using ARIUpdateStatus.
+// If QueryForStatus is true then the ARIUpdateResponse will contain the additional parameter UpdateId,
+// which is needed for ARIUpdateStatus. It is extremely likely that blocking updates will be phased out
+// in favour of QueryForStatus so we highly recommend that you send only non-blocking ARIUpdate requests
+// and poll myallocator using ARIUpdateStatus.
 type ARIRequestOptions struct {
 	QueryForStatus     bool `json:"QueryForStatus"`
 	IgnoreInvalidRooms bool `json:"IgnoreInvalidRooms"`
@@ -233,7 +236,7 @@ type RoomAvailabilityListRes struct {
 	} `json:"Rooms"`
 }
 
-// VendorReq jsut for vendor id and password
+// VendorReq just for vendor id and password
 type VendorReq struct {
 	AuthVendorID       string `json:"Auth/VendorId"`
 	AuthVendorPassword string `json:"Auth/VendorPassword"`
@@ -498,8 +501,11 @@ func (m *MyAllocator) SetDebug(enable bool) *MyAllocator {
 // SendRequest for myallocator api
 func SendRequest(url string, body interface{}, res interface{}, debug bool) error {
 	req := httplib.Post(url).Debug(debug)
+	//nolint:gosec
 	req.SetTLSClientConfig(&tls.Config{InsecureSkipVerify: true})
 	req.SetTimeout(20*time.Second, 20*time.Second)
-	req.JSONBody(body)
+	if _, err := req.JSONBody(body); err != nil {
+		return err
+	}
 	return req.ToJSON(res)
 }
